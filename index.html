@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تطبيق متكامل</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .card { background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 300px; text-align: center; }
+        input { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; }
+        button { width: 100%; padding: 10px; background-color: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; }
+        button:hover { background-color: #218838; }
+        .hidden { display: none; }
+        #errorMessage { color: red; font-size: 14px; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+
+    <div id="loginPage" class="card">
+        <h2>تسجيل الدخول</h2>
+        <div id="errorMessage"></div>
+        <input type="text" id="username" placeholder="اسم المستخدم (admin)">
+        <input type="password" id="password" placeholder="كلمة المرور (123)">
+        <button onclick="checkLogin()">دخول</button>
+    </div>
+
+    <div id="loadingPage" class="card hidden">
+        <h2>جاري التحقق...</h2>
+        <p>يرجى الانتظار ثانية واحدة.</p>
+    </div>
+
+    <div id="homePage" class="card hidden">
+        <h2 style="color: #28a745;">تم الدخول بنجاح!</h2>
+        <p>مرحباً بك في تطبيقك المتكامل.</p>
+        <button onclick="logout()" style="background-color: #dc3545;">تسجيل خروج</button>
+    </div>
+
+    <script>
+        function checkLogin() {
+            const user = document.getElementById('username').value;
+            const pass = document.getElementById('password').value;
+            const error = document.getElementById('errorMessage');
+
+            // التحقق من البيانات (مثال
